@@ -12,6 +12,10 @@ class OwnerlManager extends APIManager {
   removeAndList(id) {
     return this.delete(id).then(() => this.getAll())
   }
+  
+  post(newOwner) {
+    return this.postNew(newOwner)
+  }
 }
 
 

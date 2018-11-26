@@ -5,6 +5,17 @@ import { Link } from "react-router-dom"
 class EmployeeList extends Component {
   render() {
     return (
+      <React.Fragment>
+        <div className="employeeButton">
+          <button type="button"
+            className="btn btn-success"
+            onClick={() => {
+              this.props.history.push("/employees/new")
+            }
+            }>
+              Hire Employee
+                    </button>
+        </div>
       <section className="employees list">
         <h2 className="card-title">Our Employees</h2>
         <div className="card_holder">
@@ -23,6 +34,7 @@ class EmployeeList extends Component {
       }
         </div>
       </section>
+      </React.Fragment>
     );
   }
 }
