@@ -29,7 +29,7 @@ export default class EmployeeForm extends Component {
     }
 
     // Create the employee and redirect user to employee list
-    this.props.hireEmployee(employee).then(()=> this.props.history.push("/employees"))
+    this.props.hireEmployee(employee).then(() => this.props.history.push("/employees"))
   }
 
   render() {

@@ -15,6 +15,7 @@ import LocationDetails from './locations/LocationDetails'
 import OwnerDetails from './owners/OwnerDetails'
 import AnimalForm from "./animals/AnimalForm"
 import EmployeeForm from "./employee/EmployeeForm"
+import OwnerForm from "./owners/OwnerForm"
 
 
 
@@ -80,18 +81,18 @@ export default class ApplicationViews extends Component {
 
   hireEmployee = (employee) => {
     return EmployeeManager.post(employee)
-    .then( () => EmployeeManager.getAll())
-    .then( employees => this.setState({
-      employees: employees
-    }))
+      .then(() => EmployeeManager.getAll())
+      .then(employees => this.setState({
+        employees: employees
+      }))
   }
 
   addOwner = (owner) => {
     return OwnerManager.post(owner)
-    .then( ()=> OwnerManager.getAll())
-    .then( owners => this.setState({
-      owners: owners
-    }))
+      .then(() => OwnerManager.getAll())
+      .then(owners => this.setState({
+        owners: owners
+      }))
   }
 
   render() {
@@ -125,11 +126,11 @@ export default class ApplicationViews extends Component {
           return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees} />
         }} />
         <Route path="/employees/new" render={(props) => {
-          return <EmployeeForm {...props} hireEmployee={this.hireEmployee} locations={this.state.locations}/>
+          return <EmployeeForm {...props} hireEmployee={this.hireEmployee} locations={this.state.locations} />
         }} />
-        {/* <Route path="/owners/new" render={(props) => {
-          return <OwnerForm {...props} addOwner={this.addOwner} />
-        }} /> */}
+        <Route path="/owners/new" render={(props) => {
+          return <OwnerForm {...props} addOwner={this.addOwner} animals={this.state.animals} />
+        }} />
 
       </React.Fragment>
     )

@@ -5,7 +5,7 @@ import dog from "./DogIcon.png"
 
 export default class AnimalDetail extends Component {
   render() {
- 
+
     const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
 
     return (
