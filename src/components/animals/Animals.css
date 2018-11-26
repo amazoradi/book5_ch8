@@ -1,3 +1,8 @@
+.animalButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 60px 0 0px 0;
+}
 .animals {
     display: flex;
     justify-content: space-evenly;
@@ -25,6 +30,13 @@
     font-size: 0.7em;
 }
 
-.detail-card{
+.detail-card {
   margin: 100px;
+}
+
+.animalForm {
+   /* display: flex;
+    justify-content: space-evenly; */
+    margin: 60px 0 0px 0;
+
 }

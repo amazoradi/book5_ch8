@@ -19,7 +19,6 @@ export default class AnimalDetail extends Component {
             <h6 className="card-title">The {animal.type}</h6>
             <a href="#"
               onClick={() => this.props.deleteAnimal(animal.id)
-       // .history is an array of everywhere weve been, pushing /animals makes us go to animal by puttinng /animals first in the array
                 .then(() => this.props.history.push("/animals"))}
               className="card-link">Delete</a>
           </div>

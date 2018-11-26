@@ -13,6 +13,7 @@ import AnimalDetails from './animals/AnimalDetails'
 import EmployeeDetails from './employee/EmployeeDetails'
 import LocationDetails from './locations/LocationDetails'
 import OwnerDetails from './owners/OwnerDetails'
+import AnimalForm from "./animals/AnimalForm"
 
 
 
@@ -44,7 +45,7 @@ export default class ApplicationViews extends Component {
   }
 
   deleteAnimal = id => {
-    AnimalManager.removeAndList(id)
+   return  AnimalManager.removeAndList(id)
       .then(animals => this.setState({
         animals: animals
       })
@@ -52,7 +53,7 @@ export default class ApplicationViews extends Component {
   }
 
   fireEmployee = id => {
-    EmployeeManager.removeAndList(id)
+   return EmployeeManager.removeAndList(id)
       .then(employees => this.setState({
         employees: employees
       })
@@ -60,12 +61,21 @@ export default class ApplicationViews extends Component {
   }
 
   deleteOwner = id => {
-    OwnerManager.removeAndList(id)
+   return OwnerManager.removeAndList(id)
       .then(owners => this.setState({
         owners: owners
       })
       )
   }
+
+  addAnimal = (animal) => {
+    return AnimalManager.post(animal)
+    .then(() => AnimalManager.getAll())
+    .then(animals => this.setState({
+      animals: animals
+    })
+    )
+}
 
   render() {
     return (
@@ -74,7 +84,7 @@ export default class ApplicationViews extends Component {
           return <LocationList locations={this.state.locations} />
         }} />
         <Route exact path="/animals" render={(props) => {
-          return <AnimalList animals={this.state.animals} owners={this.state.owners} animalOwners={this.state.animalOwners} deleteAnimal={this.deleteAnimal} />
+          return <AnimalList {...props} animals={this.state.animals} owners={this.state.owners} animalOwners={this.state.animalOwners} deleteAnimal={this.deleteAnimal} />
         }} />
         <Route exact path="/employees" render={(props) => {
           return <EmployeeList employees={this.state.employees} fireEmployee={this.fireEmployee} />
@@ -94,6 +104,10 @@ export default class ApplicationViews extends Component {
         <Route path="/owners/:ownerId(\d+)" render={(props) => {
           return <OwnerDetails {...props} owners={this.state.owners} deleteOwner={this.deleteOwner} />
         }} />
+          <Route path="/animals/new" render={(props) => {
+            return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees} />
+          }} />
+
       </React.Fragment>
     )
   }

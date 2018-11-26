@@ -17,6 +17,15 @@ export default class APIManager {
       method: "DELETE"
     })
       .then(response => response.json())
+  } 
+  postNew(newThing) {
+    return fetch(`${remoteURL}/${this.name}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newThing)
+    }).then(data => data.json())
   }
 }
 
